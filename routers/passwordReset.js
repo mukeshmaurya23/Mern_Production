@@ -30,7 +30,7 @@ router.post("/", async (req, res) => {
       }).save();
     }
 
-    const url = `/password-reset/${user._id}/${token.token}/`;
+    const url = `https://tech-placement.onrender.com/password-reset/${user._id}/${token.token}/`;
     await sendEmail(user.email, "Password Reset", url);
 
     res
