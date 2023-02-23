@@ -60,9 +60,9 @@ app.use("/api/getComments", require("./routers/comment"));
 app.use("/api/analyzeResume", require("./routers/course"));
 
 //routes for the testimonial
-app.use("/api/postTestimonial", require("./routers/testimonial"));
-app.use("/api/getTestimonial", require("./routers/testimonial"));
-app.use("/api/deleteTestimonial", require("./routers/testimonial"));
+app.use("/api/postTestimonial", require("./routers/Testimonial"));
+app.use("/api/getTestimonial", require("./routers/Testimonial"));
+app.use("/api/deleteTestimonial", require("./routers/Testimonial"));
 
 // openAI
 app.use("/api/openAi", require("./routers/openAi"));
