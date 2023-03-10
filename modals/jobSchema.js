@@ -9,7 +9,6 @@ const jobSchema = new mongoose.Schema({
   jobStat: String,
   jobDays: String,
   companyName: String,
-  fav: Boolean,
 
   //count days from the date of posting
   date: String,
@@ -17,9 +16,9 @@ const jobSchema = new mongoose.Schema({
   applicants: Number,
   salary: String,
   //count no of views
-  views: Number,
-  //count no of shares
-  shares: Number,
+  // views: Number,
+  // //count no of shares
+  // shares: Number,
   overview: String,
 
   jobDesc: [
@@ -27,7 +26,23 @@ const jobSchema = new mongoose.Schema({
       description: String,
     },
   ],
-  logo: String,
+
+  // jobDesc: String,
+  logo: {
+    type: String,
+    required: true,
+  },
+
+  // logo: {
+  //   public_id: {
+  //     type: String,
+  //     required: true,
+  //   },
+  //   url: {
+  //     type: String,
+  //     required: true,
+  //   },
+  // },
 });
 const JobModal = mongoose.model("JobModal", jobSchema, "Jobs");
 module.exports = JobModal;

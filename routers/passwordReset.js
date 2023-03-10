@@ -30,7 +30,7 @@ router.post("/", async (req, res) => {
       }).save();
     }
 
-    const url = `https://tech-placement.onrender.com/password-reset/${user._id}/${token.token}/`;
+    const url = `${process.env.BASE_URL}password-reset/${user._id}/${token.token}/`;
     await sendEmail(user.email, "Password Reset", url);
 
     res
@@ -80,7 +80,7 @@ router.post("/:id/:token", async (req, res) => {
 
     if (!user.verified) user.verified = true;
 
-    const salt = await bcrypt.genSalt(Number(10));
+    const salt = await bcrypt.genSalt(Number(process.env.SALT));
     const hashPassword = await bcrypt.hash(req.body.password, salt);
 
     user.password = hashPassword;

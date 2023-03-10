@@ -28,6 +28,7 @@ app.use(morgan("dev"));
 
 //body parser middleware
 app.use(bodyParser.json());
+
 app.use("/uploads/images", express.static(path.join("uploads", "images")));
 
 // routes
@@ -59,28 +60,40 @@ app.use("/api/getComments", require("./routers/comment"));
 
 app.use("/api/analyzeResume", require("./routers/course"));
 
+//routes for course section
+app.use("/api/getCourse", require("./routers/courseSection"));
+app.use("/api/createCourse", require("./routers/courseSection"));
+app.use("/api/deleteCourse", require("./routers/courseSection"));
+app.use("/api/updateCourse", require("./routers/courseSection"));
+//app.use("/api/analyzeResume", require("./routers/courseSection"));
+
 //routes for the testimonial
-app.use("/api/postTestimonial", require("./routers/Testimonial"));
-app.use("/api/getTestimonial", require("./routers/Testimonial"));
-app.use("/api/deleteTestimonial", require("./routers/Testimonial"));
+app.use("/api/postTestimonial", require("./routers/testimonial"));
+app.use("/api/getTestimonial", require("./routers/testimonial"));
+app.use("/api/deleteTestimonial", require("./routers/testimonial"));
+
+//routes for newsTicker
+app.use("/api/postNewsTicker", require("./routers/newsTicker"));
+app.use("/api/getNewsTicker", require("./routers/newsTicker"));
+app.use("/api/deleteNewsTicker", require("./routers/newsTicker"));
 
 // openAI
 app.use("/api/openAi", require("./routers/openAi"));
 
-// app.use(express.static(path.join(__dirname, "./client/build")));
+app.use(express.static(path.join(__dirname, "./client/build")));
 
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
-// });
-if (process.env.NODE_ENV === "production") {
-  //*Set static folder up in production
-  app.use(express.static("client/build"));
+app.get("/", (req, res) => {
+  console.log("hello");
+  res.send("hello");
+});
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
 
-  app.get("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
-  );
-}
 const port = process.env.PORT || 5000;
 app.set("port", port);
 
 app.listen(port, console.log(`Listening on port ${port}...`));
+
+//"dev": "concurrently \"npm start\" \"npm run client\" ",
+//"client": "npm start --prefix client"  --> replace in package.json
