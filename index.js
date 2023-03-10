@@ -68,9 +68,9 @@ app.use("/api/updateCourse", require("./routers/courseSection"));
 //app.use("/api/analyzeResume", require("./routers/courseSection"));
 
 //routes for the testimonial
-app.use("/api/postTestimonial", require("./routers/testimonial"));
-app.use("/api/getTestimonial", require("./routers/testimonial"));
-app.use("/api/deleteTestimonial", require("./routers/testimonial"));
+app.use("/api/postTestimonial", require("./routers/Testimonial"));
+app.use("/api/getTestimonial", require("./routers/Testimonial"));
+app.use("/api/deleteTestimonial", require("./routers/Testimonial"));
 
 //routes for newsTicker
 app.use("/api/postNewsTicker", require("./routers/newsTicker"));
