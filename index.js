@@ -73,9 +73,9 @@ app.use("/api/getTestimonial", require("./routers/Testimonial"));
 app.use("/api/deleteTestimonial", require("./routers/Testimonial"));
 
 //routes for newsTicker
-app.use("/api/postNewsTicker", require("./routers/newsTicker"));
-app.use("/api/getNewsTicker", require("./routers/newsTicker"));
-app.use("/api/deleteNewsTicker", require("./routers/newsTicker"));
+app.use("/api/postNewsTicker", require("./routers/NewsTicker"));
+app.use("/api/getNewsTicker", require("./routers/NewsTicker"));
+app.use("/api/deleteNewsTicker", require("./routers/NewsTicker"));
 
 // openAI
 app.use("/api/openAi", require("./routers/openAi"));
